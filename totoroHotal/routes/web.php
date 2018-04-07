@@ -10,7 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// route to resources/views/welcome.blade.php
+
+Route::get('/','PagesController@index');
+Route::get('/about','PagesController@about');
+Route::get('/services','PagesController@services');/**/
+
+
+/*// route to resources/views/welcome.blade.php
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,7 +33,7 @@ Route::get('user/{id}', function($id){
 
 Route::get('user/{name}', function($name){
     return 'Hello '.$str;
-})->where('name', '[A-Za-z]+');        // str ต้องมีค่าเป็น ตัวอักษร A-Z, a-z เท่านั้น*/
+})->where('name', '[A-Za-z]+');        // str ต้องมีค่าเป็น ตัวอักษร A-Z, a-z เท่านั้น
 
 Route::get('user/{id}/{name}', function($id,$name){
     return 'User Id: '.$id.'<br> User Name: '.$name;
@@ -46,3 +52,4 @@ Route::get('about', function () {
 //routing to controller
 //file in app/Http/Controllers/Auth/LoginController.php
 Route::get('form','Auth\LoginController@form');
+*/
