@@ -17,9 +17,9 @@ class PostsController extends Controller
     {
         //$posts = Post::all();     
         //$posts = DB::select('SELECT * FROM posts');
-        //$posts = Post::orderBy('title','desc')->get();       //order by asc or desc
-        //$posts = Post::orderBy('title','desc')->take(1)->get();       //show posts index 1 เป็นต้นไป
-        $posts = Post::orderBy('title','desc')->paginate(2);        //แสดงเลขหน้า paginate(x) : x = จำนวนรายการที่ให้แสดงในแต่ละหน้า
+        //$posts = Post::orderBy('title','DESC')->get();       //order by ASC or DESC
+        //$posts = Post::orderBy('title','DESC')->take(1)->get();       //show posts index 1 เป็นต้นไป
+        $posts = Post::orderBy('id','DESC')->paginate(5);        //แสดงเลขหน้า paginate(x) : x = จำนวนรายการที่ให้แสดงในแต่ละหน้า
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -31,6 +31,7 @@ class PostsController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -42,6 +43,18 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        //create post
+        $post = new Post;
+        $post->title =$request->input('title');
+        $post->body =$request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success','Post Create');
     }
 
     /**
