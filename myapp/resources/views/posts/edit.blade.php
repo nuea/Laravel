@@ -12,6 +12,6 @@
             {{Form::textarea('body',$posts->body,['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body Text'])}}
         </div>
         {{Form::hidden('_method','PUT')}}
-       {{ Form::submit('Submit',['class'=>'btn btn-primary'])}}
+       {{ Form::submit('Edit',['class'=>'btn btn-warning'])}}
     {{ Form::close() }}
 @endsection
