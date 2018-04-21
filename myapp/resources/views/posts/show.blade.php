@@ -6,7 +6,7 @@
         <div class="card-body">
             <h5 class="card-title">{{$posts->title}}</h5>
             <p class="card-text">{{$posts->body}}</p>
-            <p class="card-text"><small>Written on {{$posts->created_at}}</small></p>
+            <p class="card-text"><small>Written on {{$posts->created_at}} by {{$posts->user->name}}</small></p>
             <a href="/posts" class="btn btn-secondary">Go Back</a>
 
             {{ Form::open(['action' => ['PostsController@destroy', $posts->id],'method'=>'POST','class'=>'float-right']) }}
